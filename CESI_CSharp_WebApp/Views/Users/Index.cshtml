@@ -1,0 +1,42 @@
+﻿@model IEnumerable<CESI_CSharp_WebApp.Models.User>
+
+@{
+    ViewData["Title"] = "Utilisateurs";
+}
+
+<h1>Utilisateurs</h1>
+
+<h4>Liste des utilisateurs <a class="btn btn-primary btn-sm rounded m-0 float-right" asp-action="Create">Créer un nouvel utilisateur</a></h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <!--@Html.DisplayNameFor(model => model.LastName)-->
+                Nom
+            </th>
+            <th>
+                <!--@@Html.DisplayNameFor(model => model.FirstName)-->
+                Prénom
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.ActionLink("Détails", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Éditer", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Supprimer", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
